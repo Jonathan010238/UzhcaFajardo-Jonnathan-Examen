@@ -8,7 +8,7 @@ import { Reserva } from '../modelos/reserva';
 })
 export class ReservaService {
 
-  url:String = 'http://localhost:8080:/UzhcaFajardo-Jonnathan-Examen/rest/reservas'
+  url:String = 'http://localhost:8080/UzhcaFajardo-Jonnathan-Examen/rest/reservas'
 
   constructor(private http:HttpClient) {}
 

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ClienteService {
 
-  url:String = 'http://localhost:8080:/UzhcaFajardo-Jonnathan-Examen/rest/clientes'
+  url:String = 'http://localhost:8080/UzhcaFajardo-Jonnathan-Examen/rest/clientes'
 
   constructor(private http:HttpClient) {}
 

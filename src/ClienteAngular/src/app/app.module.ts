@@ -10,6 +10,8 @@ import { ListarReservasComponent } from './vistas/listar-reservas/listar-reserva
 import { ClienteService } from './servicios/cliente.service';
 import { RestauranteService } from './servicios/restaurante.service';
 import { ReservaService } from './servicios/reserva.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ReservaService } from './servicios/reserva.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     ClienteService,

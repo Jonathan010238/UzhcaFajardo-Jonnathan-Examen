@@ -1,1 +1,32 @@
-<p>registrar-cliente works!</p>
+<div class="row mx-auto my-2">
+    <div class="col">
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/listar-reservas">Listar reservas</a>
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-reserva">Registrar Reserva</a>
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-restaurante">Registrar restaurante</a>
+    </div>
+</div>
+<div class="row mx-auto alert alert-info w-50" role="alert" *ngIf="mensaje">
+    <p class="text-center">{{mensaje}}</p>
+</div>
+<div class="row mx-auto w-25">
+    <div class="col">
+        <h3 class="text-center my-3">Registrar cliente</h3>
+        <form class="form-group">
+            <input class="form-control text-center mb-2" type="text" name="nombre" 
+                placeholder="Nombre" maxlength="25" [(ngModel)]="nombre">
+            <input class="form-control text-center mb-2" type="text" name="apellido" 
+                placeholder="Apellido" maxlength="25" [(ngModel)]="apellido">
+            <input class="form-control text-center mb-2" type="text" name="cedula" 
+                placeholder="Cédula" maxlength="10" pattern="[0-9]+" [(ngModel)]="cedula">
+            <input class="form-control text-center mb-2" type="text" name="email" 
+                placeholder="E-mail" maxlength="25" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+"
+                [(ngModel)]="email">
+            <input class="form-control text-center mb-2" type="text" name="direccion" 
+                placeholder="Dirección" maxlength="50" [(ngModel)]="direccion">
+            <input class="form-control text-center mb-2" type="text" name="telefono" 
+                placeholder="Telefono" maxlength="15" pattern="[0-9]+" [(ngModel)]="telefono">
+            <button class="btn btn-primary w-75 mx-auto d-block mt-3"
+                (click)="registrar()">Registrar</button>
+        </form>
+    </div>
+</div>

@@ -8,7 +8,7 @@ import { Restaurante } from '../modelos/restaurante';
 })
 export class RestauranteService {
 
-  url:String = 'http://localhost:8080:/UzhcaFajardo-Jonnathan-Examen/rest/restaurantes'
+  url:String = 'http://localhost:8080/UzhcaFajardo-Jonnathan-Examen/rest/restaurantes'
 
   constructor(private http:HttpClient) {}
 
