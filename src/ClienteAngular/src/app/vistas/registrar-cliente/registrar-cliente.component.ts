@@ -28,7 +28,11 @@ export class RegistrarClienteComponent implements OnInit {
 
   esNumero(valor: string): boolean {
     let expresionRegular = new RegExp("[0-9]+");
-    expresionRegular.compile();
+    return expresionRegular.test(valor);
+  }
+
+  esCorreoElectronico(valor: string): boolean {
+    let expresionRegular = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/;
     return expresionRegular.test(valor);
   }
 
@@ -66,16 +70,19 @@ export class RegistrarClienteComponent implements OnInit {
     this.mensaje = '';
     if (this.nombre && this.apellido && this.cedula &&
         this.email && this.direccion && this.telefono) {
-      //if (!this.esNumero(this.cedula)) { 
-      //  this.mensaje += 'La cedula solo debe contener números.\n'
-      //} else {
+      if (!this.esNumero(this.cedula)) { 
+        this.mensaje += 'La cedula solo debe contener números.\n'
+      } else {
         if (!this.esCedulaValida(this.cedula)) {
           this.mensaje += 'La cédula no es válida.\n';
         }
-      //}
-      //if (!this.esNumero(this.telefono)) {
-      //  this.mensaje += 'El telefono solo debe contener números.\n'
-      //}
+      }
+      if (!this.esCorreoElectronico(this.email)) {
+        this.mensaje += "El e-mail esta mal escrito.\n"
+      }
+      if (!this.esNumero(this.telefono)) {
+        this.mensaje += 'El telefono solo debe contener números.\n'
+      }
       if (this.mensaje === '') {
         this.servicioCliente.buscar(this.cedula).subscribe(
           casoExitoso => this.mensaje = 'Este cliente ya se encuentra registrado.',
@@ -86,7 +93,10 @@ export class RegistrarClienteComponent implements OnInit {
                 this.cliente = new Cliente();
                 this.mensaje = 'Cliente registrado correctamente.';
               },
-              casoFallido => console.log(casoFallido)//this.mensaje = 'ERROR: No se ha podido registrar el cliente.'
+              casoFallido => {
+                console.log(casoFallido)
+                this.mensaje = 'ERROR: No se ha podido registrar el cliente.'
+              }
             );
           }
         );

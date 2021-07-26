@@ -1,1 +1,27 @@
-<p>registrar-restaurante works!</p>
+<div class="row mx-auto my-2">
+    <div class="col">
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/listar-reservas">Listar reservas</a>
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-reserva">Registrar Reserva</a>
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-cliente">Registrar cliente</a>
+    </div>
+</div>
+<div class="row mx-auto alert alert-info w-50" role="alert" *ngIf="mensaje">
+    <p class="text-center">{{mensaje}}</p>
+</div>
+<div class="row mx-auto w-25">
+    <div class="col">
+        <h3 class="text-center my-3">Registrar restaurante</h3>
+        <form class="form-group">
+            <input class="form-control text-center mb-2" type="text" name="descripcion" 
+                placeholder="Descripción" maxlength="50" [(ngModel)]="descripcion">
+            <input class="form-control text-center mb-2" type="text" name="direccion" 
+                placeholder="Dirección" maxlength="50" [(ngModel)]="direccion">
+            <input class="form-control text-center mb-2" type="text" name="telefono" 
+                placeholder="Teléfono" maxlength="10" pattern="[0-9]+" [(ngModel)]="telefono">
+            <input class="form-control text-center mb-2" type="number" name="aforoMaximo" 
+                placeholder="Aforo máximo" [(ngModel)]="aforoMaximo">
+            <button class="btn btn-primary w-75 mx-auto d-block mt-3"
+                (click)="registrar()">Registrar</button>
+        </form>
+    </div>
+</div>
