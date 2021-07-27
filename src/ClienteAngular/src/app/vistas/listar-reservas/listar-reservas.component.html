@@ -1,1 +1,39 @@
-<p>listar-reservas works!</p>
+<div class="row mx-auto my-2">
+    <div class="col">
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-reserva">Registrar reservas</a>
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-restaurante">Registrar Restaurante</a>
+        <a class="btn btn-secondary mx-1 float-right" routerLink="/registrar-cliente">Registrar cliente</a>
+    </div>
+</div>
+<div class="row mx-auto alert alert-info w-50" role="alert" *ngIf="mensaje">
+    <p class="text-center">{{mensaje}}</p>
+</div>
+<div class="row mx-auto">
+    <div class="col">
+        <h3 class="text-center my-3">Listado de reservas</h3>
+        <form class="form-group w-50 mx-auto">
+            <input class="form-control text-center mb-2" type="text" name="filtro" 
+                placeholder="Buscar por cédula o nombre del restaurante" [(ngModel)]="filtro">
+            <button class="btn btn-primary w-50 mx-auto d-block my-3"
+                (click)="listarReservas()">Mostrar reservas</button>
+        </form>
+        <table class="table table-striped mx-auto">
+            <thead>
+                <tr>
+                    <th class="text-center">Cliente</th>
+                    <th class="text-center">Restaurante</th>
+                    <th class="text-center">Fecha</th>
+                    <th class="text-center">Total de personas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reserva of reservas">
+                    <td class="text-center">{{reserva.cliente.nombre}} {{reserva.cliente.apellido}}</td>
+                    <td class="text-center">{{reserva.restaurante.descripcion}}</td>
+                    <td class="text-center">{{reserva.fecha}}</td>
+                    <td class="text-center">{{reserva.totalPersonas}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
