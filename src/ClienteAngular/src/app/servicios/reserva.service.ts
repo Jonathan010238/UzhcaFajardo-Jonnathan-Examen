@@ -16,6 +16,10 @@ export class ReservaService {
     return this.http.post<Reserva>(`${this.url}/registrar`, reserva);
   }
 
+  verificarAforo(reserva: Reserva): Observable<any> {
+    return this.http.post<Reserva>(`${this.url}/verificar-aforo`, reserva);
+  }
+
   listar(filtro: string): Observable<any> {
     return this.http.get<Reserva>(`${this.url}/listar?filtro=${filtro}`);
   }

@@ -31,14 +31,24 @@ public class ServicioReserva {
 		Jsonb constructor = JsonbBuilder.create();
 		Reserva reserva = constructor.fromJson(reservaJSON, Reserva.class);
 		try {
-			if (reservaDAO.hayAforoDisponible(reserva)) {
-				reservaDAO.agregar(reserva);
-				return Response.status(200).entity(true).build();
-			} else {
-				return Response.status(200).entity(false).build();
-			}
+			reservaDAO.agregar(reserva);
+			return Response.status(200).entity(true).build();
 		} catch (Exception e) {
-			return Response.status(404).entity(e.getMessage()).build();
+			return Response.status(404).entity(false).build();
+		}
+	}
+	
+	@POST
+	@Path(value = "/verificar-aforo")
+	@Consumes(value = MediaType.APPLICATION_JSON)
+	@Produces(value = MediaType.TEXT_PLAIN)
+	public Response verificarAforo(String reservaJSON) {
+		Jsonb constructor = JsonbBuilder.create();
+		Reserva reserva = constructor.fromJson(reservaJSON, Reserva.class);
+		if (reservaDAO.hayAforoDisponible(reserva)) {
+			return Response.status(200).entity(true).build();
+		} else {
+			return Response.status(404).entity(false).build();
 		}
 	}
 	
