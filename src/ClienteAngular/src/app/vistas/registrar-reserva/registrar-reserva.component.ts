@@ -51,6 +51,11 @@ export class RegistrarReservaComponent implements OnInit {
     return expresionRegular.test(valor);
   }
 
+  esLetra(valor: string): boolean {
+    let expresionRegular = new RegExp("[a-zA-Z]");
+    return expresionRegular.test(valor);
+  }
+
   esCedulaValida(cedula: string): boolean {
     if (cedula.length == 10) {
       const multiplicadores = [2,1,2,1,2,1,2,1,2];
@@ -96,13 +101,17 @@ export class RegistrarReservaComponent implements OnInit {
 
   buscarRestaurante(): void {
     this.mensaje = '';
-    this.servicioRestaurante.buscar(this.descripcionRestaurante).subscribe(
-      restaurante => {
-        this.restaurante = restaurante;
-        this.aforoMaximo = this.restaurante.aforoMaximo;
-      },
-      error => this.mensaje = 'Este restaurante no existe.'
-    );
+    if (!this.esLetra(this.restaurante.descripcion)) {
+      this.mensaje = 'La descripcion del restaurante solo puede contener letras.'
+    } else {
+      this.servicioRestaurante.buscar(this.descripcionRestaurante).subscribe(
+        restaurante => {
+          this.restaurante = restaurante;
+          this.aforoMaximo = this.restaurante.aforoMaximo;
+        },
+        error => this.mensaje = 'Este restaurante no existe.'
+      );
+    }
   }
 
   registrar(): void {

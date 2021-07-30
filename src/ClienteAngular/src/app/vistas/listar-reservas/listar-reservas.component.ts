@@ -11,6 +11,7 @@ export class ListarReservasComponent implements OnInit {
 
   mensaje: string;
   filtro: string;
+  fecha: string;
   reservas: Reserva[];
 
   constructor(private servicioReserva:ReservaService) {}
@@ -25,6 +26,13 @@ export class ListarReservasComponent implements OnInit {
       this.servicioReserva.listar(this.filtro).subscribe(
         listado => {
           this.reservas = listado;
+          if (this.fecha == '') {
+            alert('Seleccione la fecha a buscar.')
+          } else {
+            this.reservas = this.reservas.filter(
+              reserva => reserva.fecha == this.fecha
+            )
+          }
           if (this.reservas.length == 0) {
             this.mensaje = 'No se han encontrado reservas con el filtro aplicado.'
           } 

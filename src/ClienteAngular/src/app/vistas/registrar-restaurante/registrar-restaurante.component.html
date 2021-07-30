@@ -13,7 +13,7 @@
         <h3 class="text-center my-3">Registrar restaurante</h3>
         <form class="form-group">
             <input class="form-control text-center mb-2" type="text" name="descripcion" 
-                placeholder="Descripción" maxlength="50" [(ngModel)]="descripcion">
+                placeholder="Descripción" maxlength="50" [(ngModel)]="descripcion" pattern="[a-zA-Z]">
             <input class="form-control text-center mb-2" type="text" name="direccion" 
                 placeholder="Dirección" maxlength="50" [(ngModel)]="direccion">
             <input class="form-control text-center mb-2" type="text" name="telefono" 

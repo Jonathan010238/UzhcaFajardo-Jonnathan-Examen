@@ -30,6 +30,11 @@ export class RegistrarRestauranteComponent implements OnInit {
     return expresionRegular.test(valor);
   }
 
+  esLetra(valor: string): boolean {
+    let expresionRegular = new RegExp("[a-zA-Z]");
+    return expresionRegular.test(valor);
+  }
+
   establecerDatosRestaurante(): void {
     this.restaurante.descripcion = this.descripcion;
     this.restaurante.direccion = this.direccion;
@@ -40,6 +45,9 @@ export class RegistrarRestauranteComponent implements OnInit {
   registrar(): void {
     this.mensaje = '';
     if (this.descripcion && this.direccion && this.telefono && this.aforoMaximo) {
+      if (!this.esLetra(this.descripcion)) {
+        this.mensaje = 'La descripcion del restaurante solo puede contener letras.'
+      }
       if (!this.esNumero(this.telefono)) {
         this.mensaje += 'El telefono solo debe contener números.\n'
       }

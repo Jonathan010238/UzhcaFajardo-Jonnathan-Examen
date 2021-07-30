@@ -13,9 +13,9 @@
         <h3 class="text-center my-3">Registrar cliente</h3>
         <form class="form-group">
             <input class="form-control text-center mb-2" type="text" name="nombre" 
-                placeholder="Nombre" maxlength="25" [(ngModel)]="nombre">
+                placeholder="Nombre" maxlength="25" [(ngModel)]="nombre" pattern="[a-zA-Z]">
             <input class="form-control text-center mb-2" type="text" name="apellido" 
-                placeholder="Apellido" maxlength="25" [(ngModel)]="apellido">
+                placeholder="Apellido" maxlength="25" [(ngModel)]="apellido" pattern="[a-zA-Z]">
             <input class="form-control text-center mb-2" type="text" name="cedula" 
                 placeholder="Cédula" maxlength="10" pattern="[0-9]+" [(ngModel)]="cedula">
             <input class="form-control text-center mb-2" type="text" name="email" 

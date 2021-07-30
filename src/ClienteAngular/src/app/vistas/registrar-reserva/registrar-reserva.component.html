@@ -13,13 +13,13 @@
         <h3 class="text-center my-3">Registrar reserva</h3>
         <form class="form-group">
             <input class="form-control text-center mb-2" type="text" name="cedula" 
-                placeholder="Cédula" maxlength="10" pattern="[0-9]+" [(ngModel)]="cedulaCliente">
+                placeholder="Cédula" maxlength="10" pattern="[0-9]+" [(ngModel)]="cedulaCliente" pattern="[0-9]+">
             <input class="form-control text-center mb-2" type="text" name="cliente" 
                 placeholder="Nombre de cliente" value="{{nombreCliente}}" disabled>
             <button class="btn btn-primary w-75 mx-auto d-block my-3"
                 (click)="buscarCliente()">Buscar cliente</button>
             <input class="form-control text-center mb-2" type="text" name="restaurante" 
-                placeholder="Nombre del restaurante" [(ngModel)]="descripcionRestaurante">
+                placeholder="Nombre del restaurante" [(ngModel)]="descripcionRestaurante" pattern="[a-zA-Z]">
             <input class="form-control text-center mb-2" type="text" name="aforoMaximo" 
                 placeholder="Aforo máximo" value="{{aforoMaximo}}" disabled>
             <button class="btn btn-primary w-75 mx-auto d-block my-3"

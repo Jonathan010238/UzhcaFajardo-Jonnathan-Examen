@@ -31,6 +31,11 @@ export class RegistrarClienteComponent implements OnInit {
     return expresionRegular.test(valor);
   }
 
+  esLetra(valor: string): boolean {
+    let expresionRegular = new RegExp("[a-zA-Z]");
+    return expresionRegular.test(valor);
+  }
+
   esCorreoElectronico(valor: string): boolean {
     let expresionRegular = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/;
     return expresionRegular.test(valor);
@@ -70,6 +75,12 @@ export class RegistrarClienteComponent implements OnInit {
     this.mensaje = '';
     if (this.nombre && this.apellido && this.cedula &&
         this.email && this.direccion && this.telefono) {
+      if (!this.esLetra(this.nombre)) {
+        this.mensaje += "El nombre solo debe contener letras.\n"
+      }
+      if (!this.esLetra(this.apellido)) {
+        this.mensaje += "El apellido solo debe contener letras.\n"
+      }
       if (!this.esNumero(this.cedula)) { 
         this.mensaje += 'La cedula solo debe contener números.\n'
       } else {
